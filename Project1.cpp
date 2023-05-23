@@ -1,171 +1,45 @@
-﻿// Project1.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
-//
+﻿/*숙제 12 - 1
+1) 3->1,4,5  1->0,2   5->7,6  7->8,9
+2)
 
+숙제 12-2
+v{A,B,C,D}  E{<A,B>,<B,D>,<C,D>}
+
+  A  B  C  D     ( *== 의미없음)
+A *  1  0  0
+B 0  *  0  1
+C 0  0  *  1
+D 0  0  0  *
+
+A->B->C->D
+C->A->B->D
+
+while(!Q.empty())
+Q.pop(start point);
+for i in adj[s]
+pop adj[s]
+
+숙제12-3 */
 #include <iostream>
 
 using namespace std;
-
-
-
-class binarynode
-
-{
-
-protected:
-
-    int data;
-
-    binarynode* left;
-
-    binarynode* right;
-
-    void inorder(int data)
-
-    {
-        if (left != NULL)
-
-            left->inorder();
-
-        cout << (char)data << " ";
-
-    }
-
-    void preorder(int data)
-
-    {
-
-        cout << (char)data << " ";
-
-        if (left != NULL)
-
-            left->preorder();
-
-        if (right != NULL)
-
-            right->preorder();
-
-    }
-
-    void postorder(int data)
-
-    {
-
-        if (left != NULL)
-
-            left->postorder();
-
-        if (right != NULL)
-
-            right->postorder();
-
-        cout << (char)data << " ";
-
-    }
-
-
-    binarynode* i(int a)
-
-    {
-
-        if (a == data)
-
-            return this;
-
-        else if (a < data && left != NULL)
-
-            return left->i(a);
-
-        else if (a > data && right != NULL)
-
-            return right->i(a);
-
-        else
-
-            return NULL;
-
-    }
-
-    void setData(int val)
-
-    {
-
-        data = val;
-
-    }
-
-    void setLeft(binarynode* l)
-
-    {
-
-        left = l;
-
-    }
-
-    void setRight(binarynode* r)
-
-    {
-
-        right = r;
-
-    }
-
-    int getData()
-
-    {
-
-        return data;
-
-    }
-
-    binarynode* getLeft()
-
-    {
-
-        return left;
-
-    }
-
-    binarynode* getRight()
-
-    {
-
-        return right;
-
-    }
-
-    bool isLeaf()
-
-    {
-
-        return left == NULL && right == NULL;
-
-    }
-
-    void inorder()
-
-    {
-
-        inorder(data);
-
-    }
-
-    void preorder()
-
-    {
-
-        preorder(data);
-
-    }
-
-    void postorder()
-
-    {
-
-        postorder(data);
-
-    }
-
-};
+void bfs(int v) {
+	visited[v] = true;
+	cout << getvertex(v);
+
+	CircularQueue que;
+	que.enqueue(v);
+
+	while (!que.isempty()) {
+		int v = que.dequeue();
+		for (int w=0; w<size; w++)
+			if (islink(v, w), && visited[w] == false) {
+				visited[w] = true;
+				cout << getvertex(w);
+				que.enqueue(w);
+			}
+	}
+}
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
 // 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
